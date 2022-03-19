@@ -1,0 +1,25 @@
+<% if user_signed_in? %>
+<span>
+<% @product.each do |pro| %>
+<div class="card" style=" background-color: white; margin-left: 10%; width: 75%;">
+<button style="margin-left: 90%"><a style = " color: blue" id = "link" href="/editproduct?productid=<%= pro.id %>">Edit</a></button>
+<button><a style = " color: blue" id = "link" href="/deleteproduct?productid=<%= pro.id %>">Delete</a></button>
+<table style="width: 100%">
+<tbody>
+<tr>
+<td style="width: 40%"><%= link_to image_tag(pro.image, style: 'margin-left: 20px; width: 80%; height: 500px;')%></td>
+<td style="width: 60%">
+    <h2><b><%= pro.name %></b></h2>
+    <h4>Price: ₹<%= pro.price %></h4>
+    <h4>description</h4>
+    <p><%= pro.description %></p>
+    <h4>Specification</h4>
+    <p><%= pro.specification %></p>
+    </td>
+  </div>
+<% end %>
+
+</span>
+<% else %>
+<div style="color: red;" ><h1 style = "text-align: center">Please Login again!!!</h1></div>
+<% end %>

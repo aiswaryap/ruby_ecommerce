@@ -1,0 +1,20 @@
+<h1 style="text-align: center;">Add Product</h1>
+<% if user_signed_in? %>
+<div class="card" style="padding: 10px; margin-left: 10%; width: 80%; background-color: white;">
+<form action="/createproduct" enctype="multipart/form-data" method = "POST" >
+
+<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+            <input type="text" class="form-control" name="product[name]" placeholder="Name" value="" /><br/>
+            <input type="text" class="form-control" name="product[price]" placeholder="Price" value="" /><br/>
+            <textarea type="text" id="description" rows="6" cols="145" name="product[description]" placeholder="Description"></textarea>
+            
+            <input type="text" class="form-control" name="product[specification]" placeholder="Specification" value="" /><br/>
+            <input type="text" class="form-control" name="product[brand]" placeholder="Company" value="" /><br/>
+            <input type="file" id="user_avatar" name="product[image]" placeholder=" Image " value="" /><br/>
+           <div style="text-align: center;"> <input type="submit" class="btnRegister"  value="Submit"/></div>
+</form>
+
+</div>
+<% else %>
+<div style="color: red;" ><h1 style = "text-align: center">Please Login again!!!</h1></div>
+<% end %>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ecommerce</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+  <h1 style="text-align: center;">Welcome to Ecommerce Application </h1>
+<nav class="navbar navbar-default navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+    <ul class="nav navbar-nav">
+    <li class="active"><a href="/ecommerce">Ecommerce Application</a></li>
+   
+  </ul>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <% if user_signed_in? %>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/addproducts">Add Items</a></li>
+        <li class="active"><a href="/viewproducts">View Items</a></li>
+       
+      </ul>
+      <% end %>
+      <% if user_signed_in? %>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+        
+      </ul>
+            
+  <% else %>
+  <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to('Login', new_user_session_path)  %></li>
+        <li><%= link_to('Sign Up', new_user_registration_path)  %></li>
+       
+      </ul> 
+  <% end %>
+      
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+  
+    <%= yield %>
+    
+  </body>
+</html>

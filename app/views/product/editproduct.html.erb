@@ -1,0 +1,32 @@
+
+<% if user_signed_in? %>
+<span>
+<h1 style="text-align: center">Edit Product</h1>
+
+<% @product.each do |item| %>
+    <div class="card" style="padding: 10px; margin-left: 8%; width: 82%; background-color: white;">
+<form action="/updateproduct?productid=<%= item.id %>" enctype="multipart/form-data" method = "POST" >
+
+<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+<label>Product Name</label>
+<input type="text" class="form-control" name="product[name]" placeholder="Name" value=<%= item.name %> />
+<label>Price</label>
+<input type="text" class="form-control" name="product[price]" placeholder="Price" value=<%= item.price %> />
+<label>Description</label> 
+<textarea type="text" id="description" rows="6" cols="150" name="product[description]"><%= item.description %></textarea>
+<label>Specification</label> 
+<textarea type="text" id="description" rows="6" cols="150" name="product[specification]"><%= item.specification %></textarea>
+<label>Company</label> 
+<input type="text" class="form-control" name="product[brand]" placeholder="Company" value=<%= item.brand %> />
+<label>Image</label>
+<input type="file" id="user_avatar" name="product[image]" placeholder=" Image " value="" />
+            
+<div style="width 100%; text-align: center;" ><button><a style = " color: blue" id = "link" href="/productdetails?productid=<%= item.id %>">Cancel</a></button><input type="submit" class="btnRegister"  value="Submit"/></div>
+</form>
+</div>
+<% end %>
+
+</span>
+<% else %>
+<div style="color: red;" ><h1 style = "text-align: center">Please Login again!!!</h1></div>
+<% end %>

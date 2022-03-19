@@ -7,7 +7,13 @@
 <table style="width: 100%">
 <tbody>
 <tr>
-<td style="width: 40%"><%= link_to image_tag(pro.image, style: 'margin-left: 20px; width: 80%; height: 500px;')%></td>
+<td style="width: 40%">
+<% if pro.image.attached? %>
+<%= link_to image_tag(pro.image, style: 'margin-left: 20px; width: 80%; height: 500px;')%>
+<% else %>
+<p style="text-align: center;">No images added</p>
+<% end %>
+</td>
 <td style="width: 60%">
     <h2><b><%= pro.name %></b></h2>
     <h4>Price: ₹<%= pro.price %></h4>
